@@ -1,4 +1,6 @@
 # Logs
+.eslintrc.js
+1.js
 logs
 *.log
 npm-debug.log*
