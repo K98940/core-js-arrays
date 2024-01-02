@@ -1,4 +1,3 @@
-/* eslint-disable */
 /* ********************************************************************************************
  *                                                                                            *
  * Please read the following tutorial before implementing tasks:                               *
@@ -267,9 +266,9 @@ function distinct(arr) {
  *    createNDimensionalArray(1, 1) => [0]
  */
 function createNDimensionalArray(n, size) {
-  const create = (n, arr) => {
-    if (n < 2) return arr;
-    return create(n - 1, Array(size).fill(arr));
+  const create = (depth, arr) => {
+    if (depth < 2) return arr;
+    return create(depth - 1, Array(size).fill(arr));
   };
 
   return create(n, Array(size).fill(0));
@@ -390,10 +389,7 @@ function getElementByIndices(arr, indices) {
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
 function getFalsyValuesCount(arr) {
-  return arr.reduce(
-    (falsyCount, el) => (el ? falsyCount : (falsyCount += 1)),
-    0
-  );
+  return arr.reduce((falsyCount, el) => (el ? falsyCount : falsyCount + 1), 0);
 }
 
 /*
@@ -433,7 +429,7 @@ function getIdentityMatrix(n) {
  */
 function getIndicesOfOddNumbers(numbers) {
   return numbers.reduce((result, n, i) => {
-    return n & 1 ? [...result, i] : result;
+    return n % 2 ? [...result, i] : result;
   }, []);
 }
 
